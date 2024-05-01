@@ -85,6 +85,11 @@ namespace MonoGame5___Enumeration
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            backgroundTexture = Content.Load<Texture2D>("space-background");
+            brownTribbleTexture = Content.Load<Texture2D>("tribbleBrown");
+            creamTribbleTexture = Content.Load<Texture2D>("tribbleCream");
+            greyTribbleTexture = Content.Load<Texture2D>("tribbleGrey");
+            orangeTribbleTexture = Content.Load<Texture2D>("tribbleOrange");
             backgroundIntroTexture = Content.Load<Texture2D>("background");
 
             // TODO: use this.Content to load your game content here
@@ -100,7 +105,10 @@ namespace MonoGame5___Enumeration
             // TODO: Add your update logic here
             if (screen == Screen.Intro)
             {
-
+                if (mouseState.LeftButton == ButtonState.Pressed)
+                {
+                    screen = Screen.MainAnimation;
+                }
             }
             else if (screen == Screen.MainAnimation)
             {
@@ -119,7 +127,7 @@ namespace MonoGame5___Enumeration
                     {
                         brownTribbleSpeed.Y *= -1;
 
-                        numColors = random.Next(0, 4);
+                        numColors = random.Next(0, 5);
 
                         if (numColors == 0)
                         {
@@ -152,7 +160,7 @@ namespace MonoGame5___Enumeration
                     {
                         creamTribbleSpeed.X *= -1;
 
-                        numColors = random.Next(0, 4);
+                        numColors = random.Next(0, 5);
 
                         if (numColors == 0)
                         {
@@ -190,7 +198,7 @@ namespace MonoGame5___Enumeration
                     {
                         greyTribbleSpeed.X *= -1;
 
-                        numColors = random.Next(0, 4);
+                        numColors = random.Next(0, 5);
 
                         if (numColors == 0)
                         {
@@ -220,7 +228,7 @@ namespace MonoGame5___Enumeration
                     {
                         greyTribbleSpeed.Y *= -1;
 
-                        numColors = random.Next(0, 4);
+                        numColors = random.Next(0, 5);
 
                         if (numColors == 0)
                         {
@@ -251,7 +259,7 @@ namespace MonoGame5___Enumeration
                     {
                         orangeTribbleSpeed.X *= -1;
 
-                        numColors = random.Next(0, 4);
+                        numColors = random.Next(0, 5);
 
                         if (numColors == 0)
                         {
@@ -281,7 +289,7 @@ namespace MonoGame5___Enumeration
                     {
                         orangeTribbleSpeed.Y *= -1;
 
-                        numColors = random.Next(0, 4);
+                        numColors = random.Next(0, 5);
 
                         if (numColors == 0)
                         {
