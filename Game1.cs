@@ -45,7 +45,7 @@ namespace MonoGame5___Enumeration
         Screen screen;
 
         int numColors;
-
+        int bounces = 0;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -117,14 +117,15 @@ namespace MonoGame5___Enumeration
                     brownTribbleRect.X += (int)brownTribbleSpeed.X;
                     if (brownTribbleRect.Right > window.Width || brownTribbleRect.Left < 0)
                     {
+                        bounces++;
                         brownTribbleSpeed.X *= -1;
-
                     }
 
                     // Up n Down
                     brownTribbleRect.Y += (int)brownTribbleSpeed.Y;
                     if (brownTribbleRect.Top < 0 || brownTribbleRect.Bottom > window.Height)
                     {
+                        bounces++;
                         brownTribbleSpeed.Y *= -1;
 
                         numColors = random.Next(0, 5);
@@ -158,6 +159,7 @@ namespace MonoGame5___Enumeration
                     creamTribbleRect.X += (int)creamTribbleSpeed.X;
                     if (creamTribbleRect.Right > window.Width || creamTribbleRect.Left < 0)
                     {
+                        bounces++;
                         creamTribbleSpeed.X *= -1;
 
                         numColors = random.Next(0, 5);
@@ -188,6 +190,7 @@ namespace MonoGame5___Enumeration
                     creamTribbleRect.Y += (int)creamTribbleSpeed.Y;
                     if (creamTribbleRect.Top < 0 || creamTribbleRect.Bottom > window.Height)
                     {
+                        bounces++;
                         creamTribbleSpeed.Y *= -1;
                     }
                 } // Cream Tribble
@@ -196,6 +199,7 @@ namespace MonoGame5___Enumeration
                     greyTribbleRect.X += (int)greyTribbleSpeed.X;
                     if (greyTribbleRect.Right > window.Width || greyTribbleRect.Left < 0)
                     {
+                        bounces++;
                         greyTribbleSpeed.X *= -1;
 
                         numColors = random.Next(0, 5);
@@ -226,6 +230,7 @@ namespace MonoGame5___Enumeration
                     greyTribbleRect.Y += (int)greyTribbleSpeed.Y;
                     if (greyTribbleRect.Top < 0 || greyTribbleRect.Bottom > window.Height)
                     {
+                        bounces++;
                         greyTribbleSpeed.Y *= -1;
 
                         numColors = random.Next(0, 5);
@@ -257,6 +262,7 @@ namespace MonoGame5___Enumeration
                     orangeTribbleRect.X += (int)orangeTribbleSpeed.X;
                     if (orangeTribbleRect.Right > window.Width || orangeTribbleRect.Left < 0)
                     {
+                        bounces++;
                         orangeTribbleSpeed.X *= -1;
 
                         numColors = random.Next(0, 5);
@@ -287,6 +293,7 @@ namespace MonoGame5___Enumeration
                     orangeTribbleRect.Y += (int)orangeTribbleSpeed.Y;
                     if (orangeTribbleRect.Top < 0 || orangeTribbleRect.Bottom > window.Height)
                     {
+                        bounces++;
                         orangeTribbleSpeed.Y *= -1;
 
                         numColors = random.Next(0, 5);
@@ -313,6 +320,11 @@ namespace MonoGame5___Enumeration
                         }
                     }
                 } // Orange Tribble
+
+                if (bounces >= 150)
+                {
+                    Exit();
+                }
             }
             base.Update(gameTime);
         }
