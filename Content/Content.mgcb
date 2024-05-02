@@ -25,12 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:Background.jpg
 
-#begin End.spritefont
+#begin enterYard.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:End.spritefont
+/build:enterYard.spritefont
 
 #begin space-background.jpg
 /importer:TextureImporter

@@ -45,13 +45,16 @@ namespace MonoGame5___Enumeration
         Random random = new Random();
 
         Screen screen;
+        SpriteFont enterFont;
 
         int numColors;
-        int bounces = 0;
+        int bounces;
+
+        string text;
 
         float seconds;
 
-        SpriteFont endFont;
+        
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -88,7 +91,9 @@ namespace MonoGame5___Enumeration
 
             seconds = 0;
 
-            endFont = Content.Load<SpriteFont>("End");
+            bounces = 0;
+
+            enterFont = Content.Load<SpriteFont>("enterYard");
 
             base.Initialize();
 
@@ -361,6 +366,7 @@ namespace MonoGame5___Enumeration
             if (screen == Screen.Intro)
             {
                 _spriteBatch.Draw(backgroundIntroTexture, window, Color.White);
+                _spriteBatch.DrawString(enterFont, "Left click to enter the Tribble Yard", new Vector2(10, 200), Color.White);
             }
             else if (screen == Screen.MainAnimation)
             {
@@ -372,7 +378,7 @@ namespace MonoGame5___Enumeration
             }
             else if (screen == Screen.End)
             {
-                _spriteBatch.Draw(theEndTexture, new Rectangle(1, 1, 790, 490), Color.White);
+                _spriteBatch.Draw(theEndTexture, new Rectangle(5, 50, 790, 375), Color.White);
             }
 
             _spriteBatch.End();
