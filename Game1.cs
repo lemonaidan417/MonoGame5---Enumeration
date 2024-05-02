@@ -8,7 +8,8 @@ namespace MonoGame5___Enumeration
     enum Screen
     {
         Intro,
-        MainAnimation
+        MainAnimation,
+        End
     }
     public class Game1 : Game
     {
@@ -46,6 +47,8 @@ namespace MonoGame5___Enumeration
 
         int numColors;
         int bounces = 0;
+
+        float seconds; 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -78,6 +81,9 @@ namespace MonoGame5___Enumeration
             orangeTribbleColor = Color.White;
 
             screen = Screen.Intro;
+
+            seconds = 0;
+
             base.Initialize();
 
         }
@@ -323,6 +329,15 @@ namespace MonoGame5___Enumeration
 
                 if (bounces >= 150)
                 {
+                    screen = Screen.End;
+                }
+            }
+            else if (screen == Screen.End)
+            {
+                seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (seconds >= 7)
+                {
                     Exit();
                 }
             }
@@ -347,6 +362,10 @@ namespace MonoGame5___Enumeration
                 _spriteBatch.Draw(creamTribbleTexture, creamTribbleRect, creamTribbleColor);
                 _spriteBatch.Draw(greyTribbleTexture, greyTribbleRect, greyTribbleColor);
                 _spriteBatch.Draw(orangeTribbleTexture, orangeTribbleRect, orangeTribbleColor);
+            }
+            else if (screen == Screen.End)
+            {
+
             }
 
             _spriteBatch.End();
