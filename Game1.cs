@@ -22,6 +22,7 @@ namespace MonoGame5___Enumeration
         Texture2D greyTribbleTexture;
         Texture2D orangeTribbleTexture;
         Texture2D backgroundTexture;
+        Texture2D theEndTexture;
 
         Rectangle brownTribbleRect;
         Rectangle creamTribbleRect;
@@ -48,7 +49,9 @@ namespace MonoGame5___Enumeration
         int numColors;
         int bounces = 0;
 
-        float seconds; 
+        float seconds;
+
+        SpriteFont endFont;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -59,7 +62,7 @@ namespace MonoGame5___Enumeration
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            window = new Rectangle(0, 0, 800, 480);
+            window = new Rectangle(0, 0, 800, 500);
             _graphics.PreferredBackBufferWidth = window.Width;
             _graphics.PreferredBackBufferHeight = window.Height;
 
@@ -80,9 +83,12 @@ namespace MonoGame5___Enumeration
             orangeTribbleSpeed = new Vector2(8, 15);
             orangeTribbleColor = Color.White;
 
+
             screen = Screen.Intro;
 
             seconds = 0;
+
+            endFont = Content.Load<SpriteFont>("End");
 
             base.Initialize();
 
@@ -97,6 +103,7 @@ namespace MonoGame5___Enumeration
             greyTribbleTexture = Content.Load<Texture2D>("tribbleGrey");
             orangeTribbleTexture = Content.Load<Texture2D>("tribbleOrange");
             backgroundIntroTexture = Content.Load<Texture2D>("background");
+            theEndTexture = Content.Load<Texture2D>("the-end");
 
             // TODO: use this.Content to load your game content here
         }
@@ -327,7 +334,7 @@ namespace MonoGame5___Enumeration
                     }
                 } // Orange Tribble
 
-                if (bounces >= 150)
+                if (bounces >= 50)
                 {
                     screen = Screen.End;
                 }
@@ -336,7 +343,7 @@ namespace MonoGame5___Enumeration
             {
                 seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (seconds >= 7)
+                if (seconds >= 5)
                 {
                     Exit();
                 }
@@ -346,7 +353,7 @@ namespace MonoGame5___Enumeration
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkSlateGray);
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
@@ -365,7 +372,7 @@ namespace MonoGame5___Enumeration
             }
             else if (screen == Screen.End)
             {
-
+                _spriteBatch.Draw(theEndTexture, new Rectangle(1, 1, 790, 490), Color.White);
             }
 
             _spriteBatch.End();
