@@ -45,12 +45,11 @@ namespace MonoGame5___Enumeration
         Random random = new Random();
 
         Screen screen;
+
         SpriteFont enterFont;
 
         int numColors;
         int bounces;
-
-        string text;
 
         float seconds;
 
